@@ -43,7 +43,7 @@ module.exports = {
             tag: 'FORM_DEC_ATT',
           }, {
             tag: 'DATE_DEC_ATT',
-            formatter: (value) => value || null,
+            formatter: (tagSelector) => tagSelector.text() || null,
           }, {
             tag: 'SIEGE_APPEL',
           }, {
@@ -72,6 +72,20 @@ module.exports = {
         tag: 'BLOC_TEXTUEL',
         keys: [{
           tag: 'CONTENU',
+          formatter: (tagSelector) => {
+            const hasBreakLineTag = tagSelector.html().indexOf('<br/>') > -1;
+            let contentFormated = [];
+            if (hasBreakLineTag) {
+              contentFormated = tagSelector.html().split('<br/>');
+            } else {
+              tagSelector.children().each((i, child) => {
+                contentFormated.push(tagSelector.find(child).text());
+              });
+            }
+            return contentFormated
+              .map((line) => line.trim())
+              .filter((line) => line);
+          },
           children: [],
         }],
       }, {

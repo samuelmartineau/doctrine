@@ -12,9 +12,10 @@ module.exports = function parseSchema(ancestor, root) {
       }, {}),
     };
   } else {
-    const value = ancestor.find(root.tag).text();
     return {
-      [root.tag]: root.formatter ? root.formatter(value) : value,
+      [root.tag]: root.formatter ?
+        root.formatter(ancestor.find(root.tag)) :
+        ancestor.find(root.tag).text(),
     };
   };
 };

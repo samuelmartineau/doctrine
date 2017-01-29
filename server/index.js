@@ -11,7 +11,7 @@ const walk = require('./walk');
 
 const spawn = require('child_process').spawn;
 const cmd = spawn('docker-machine', ['ip']);
-const NUMBER_OF_PARALLEL_READ = 200;
+const NUMBER_OF_PARALLEL_READ = 3;
 
 console.time('walk');
 cmd.stdout.on('data', (dockerMachineIp) => {
@@ -55,8 +55,8 @@ cmd.stdout.on('data', (dockerMachineIp) => {
           .then(() => {
             next();
           }, (err) => {
-            console.log('file', file)
-            console.log('err', JSON.stringify(err, null, 7));
+            console.log('file', file);
+            console.log('err', err);
             // next();
           });
       }, () => {
