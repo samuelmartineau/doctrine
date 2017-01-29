@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <hello></hello>
+    <search></search>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import Search from './components/Search'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    Search
   }
 }
 </script>
