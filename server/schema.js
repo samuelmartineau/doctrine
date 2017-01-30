@@ -38,6 +38,12 @@ module.exports = {
               tag: 'NUMERO_AFFAIRE',
             }],
           }, {
+            tag: 'PUBLI_BULL',
+            attributes: [{
+              attribute: 'publie',
+              key: 'isPublished',
+            }],
+          }, {
             tag: 'FORMATION',
           }, {
             tag: 'FORM_DEC_ATT',

@@ -48,7 +48,7 @@ cmd.stdout.on('data', (dockerMachineIp) => {
             return client.create({
               index: 'doctrine',
               type: 'legalCase',
-              id: data.TEXTE_JURI_JUDI.META.META_COMMUN.ID,
+              id: data.texteJuriJudi.meta.metaCommun.id,
               body: data,
             });
           })
