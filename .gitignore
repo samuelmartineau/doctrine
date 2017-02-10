@@ -121,3 +121,6 @@ Temporary Items
 *.orig
 
 # End of https://www.gitignore.io/api/wind,windows,node,linux,osx,git
+
+**/*/node_modules
+**/*/dist

@@ -1,18 +1,22 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
+  <div id="search">
+    <h1>Sam</h1>
+    <Search></Search>
   </div>
 </template>
 
 <script>
+import Search from '../components/Search'
 export default {
-  name: 'app'
+  name: 'search',
+  components: {
+    Search
+  }
 }
 </script>
 
 <style>
-#app {
+#legal-case {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
