@@ -17,9 +17,14 @@ export default {
 <style lang="scss">
 @import 'styles/variables.scss';
 
+html {
+  height: 100%;
+}
 body {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  margin: 0;
+  min-height: 100%;
+    background-color: #e7e7e7;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    margin: 0;
 }
 
 * {
