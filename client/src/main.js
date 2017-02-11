@@ -2,11 +2,11 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import runtime from 'serviceworker-webpack-plugin/lib/runtime'
-import VueResource from 'vue-resource'
+import store from 'store'
 import App from './App'
 import router from './router'
 
-if ('serviceWorker' in navigator) {
+if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
   const registration = runtime.register()
   registration.then((reg) => {
     console.log('Successfully registered service worker', reg)
@@ -15,12 +15,11 @@ if ('serviceWorker' in navigator) {
   })
 }
 
-Vue.use(VueResource)
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: {
     App

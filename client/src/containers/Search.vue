@@ -1,27 +1,31 @@
 <template>
-  <div id="search">
-    <h1>Sam</h1>
-    <Search></Search>
-  </div>
+  <div class="search-container">
+    <field></field>
+    <result-stats></result-stats>
+    <highlight></highlight>
 </template>
 
 <script>
-import Search from '../components/Search'
+import Field from '../components/Field'
+import ResultStats from '../components/ResultStats'
+import Highlight from '../components/Highlight'
 export default {
   name: 'search',
+  computed: {
+    search () {
+      return this.$store.state.search
+    }
+  },
   components: {
-    Search
+    Field,
+    ResultStats,
+    Highlight
   }
 }
 </script>
 
 <style>
-#legal-case {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.search-container {
+  margin: -1em 1em 0.5em 1em;
 }
 </style>

@@ -1,6 +1,5 @@
 <template>
-  <div id="legal-case">
-    <h1>Sam</h1>
+  <div class="legal-case">
   </div>
 </template>
 
@@ -13,7 +12,7 @@ export default {
 </script>
 
 <style>
-#legal-case {
+.legal-case {
   background-color: red;
 }
 </style>
