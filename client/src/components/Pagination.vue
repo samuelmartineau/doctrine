@@ -1,6 +1,6 @@
 <template>
   <div class="pagination" v-if="search.results && search.results.hits">
-    <button v-on:click="nextPage" class="mdl-button mdl-js-button mdl-button--raised" :disabled="search.from === 0">previous page</button>
+    <button v-on:click="previousPage" class="mdl-button mdl-js-button mdl-button--raised" :disabled="search.from === 0">previous page</button>
     <span>{{ search.from }}</span>
     <button v-on:click="nextPage" class="mdl-button mdl-js-button mdl-button--raised">next page</button>
   </div>
@@ -15,7 +15,7 @@ export default {
       return this.$store.state.search
     }
   },
-  methods: mapActions(['nextPage'])
+  methods: mapActions(['nextPage', 'previousPage'])
 }
 </script>
 

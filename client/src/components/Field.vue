@@ -21,7 +21,6 @@ export default {
   },
   methods: {
     updateFilters (value) {
-      console.log(value)
       this.$store.dispatch('search', {
         value
       })

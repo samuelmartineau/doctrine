@@ -12,7 +12,7 @@ export default new Router({
       })
     }
   }, {
-    path: '/legal-case',
+    path: '/legal-case/:id',
     name: 'legal-case',
     component: resolve => {
       require.ensure(['../containers/LegalCase.vue'], () => {

@@ -1,10 +1,7 @@
-const mutations = {
-  setResults (state, data) {
-    state.search = {
-      ...state.search,
-      ...data
-    }
-  }
-}
+import search from './search'
+import legalCase from './legalCase'
 
-export default mutations
+export default {
+  ...search,
+  ...legalCase
+}

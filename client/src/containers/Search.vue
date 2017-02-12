@@ -1,10 +1,13 @@
 <template>
   <div class="search-container">
     <field></field>
-    <result-stats></result-stats>
-    <pagination></pagination>
-    <highlight></highlight>
-    <pagination></pagination>
+    <spinner v-if="search.isFetching"></spinner>
+    <div v-if="!search.isFetching">
+      <result-stats></result-stats>
+      <pagination></pagination>
+      <highlight></highlight>
+      <pagination></pagination>
+    </div>
 </template>
 
 <script>
@@ -12,6 +15,7 @@ import Field from '../components/Field'
 import ResultStats from '../components/ResultStats'
 import Highlight from '../components/Highlight'
 import Pagination from '../components/Pagination'
+import Spinner from '../components/Spinner'
 export default {
   name: 'search',
   computed: {
@@ -23,7 +27,8 @@ export default {
     Field,
     ResultStats,
     Highlight,
-    Pagination
+    Pagination,
+    Spinner
   }
 }
 </script>
