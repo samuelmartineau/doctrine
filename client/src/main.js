@@ -6,7 +6,7 @@ import store from 'store'
 import App from './App'
 import router from './router'
 
-if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
   const registration = runtime.register()
   registration.then((reg) => {
     console.log('Successfully registered service worker', reg)

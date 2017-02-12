@@ -9,25 +9,45 @@ self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(cacheName).then((cache) => {
       return cache.addAll([
-        // './offline.html'
-      ].concat(Object.values(assets))).then(() => {
+        '/',
+        '/index.html'
+      ].concat(Object.values(assets)))
+      .then(() => {
         self.skipWaiting()
+      })
+      .catch((error) => {
+        console.log(error)
       })
     })
   )
 })
 
+self.addEventListener('activate', event => {
+  event.waitUntil(self.clients.claim())
+})
+
 // when the browser fetches a URL…
 self.addEventListener('fetch', (event) => {
-  // … either respond with the cached object or go ahead and fetch the actual URL
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      if (response) {
-        // retrieve from cache
-        return response
-      }
-      // fetch as normal
-      return fetch(event.request)
-    })
-  )
+  const apiKey = ':9200/'
+  const isWebService = event.request.url.indexOf(apiKey) > -1
+  if (isWebService) {
+    event.respondWith(
+      caches.match(event.request)
+      .then((response) => {
+        response || fetch(event.request)
+        .then((response) => {
+          return caches.open(cacheName).then((cache) => {
+            cache.put(event.request.url, response.clone())
+            return response
+          })
+        })
+      })
+    )
+  } else {
+    event.respondWith(
+      caches.match(event.request).then((response) => {
+        return response || fetch(event.request)
+      })
+    )
+  }
 })

@@ -1,7 +1,7 @@
 <template>
-<div class="field">
-  <input class="field__input" v-model="query" placeholder="Type your field here">
-</div>
+<form class="field">
+  <input aria-label="query" class="field__input" v-model="query" placeholder="Type your field here">
+</form>
 </template>
 
 <script>
@@ -37,8 +37,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  .field {
+    text-align: center;
+  }
   .field__input {
     width: 100%;
     padding: 1em;
+    max-width: 500px;
   }
 </style>
