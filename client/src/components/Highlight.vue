@@ -1,15 +1,12 @@
 <template>
   <div class="highlight" v-if="search.results && search.results.hits">
-  <ul>
-    <li v-for="hit in search.results.hits.hits">
+    <div class="mdl-card mdl-shadow--2dp highlight__card" v-for="hit in search.results.hits.hits">
       <div v-for="keys in Object.keys(hit.highlight)">
         <h1>Donnée: {{ keys.split('.')[0] }} </h1>
         <p v-for="sentence in hit.highlight[keys]" v-html="sentence"></p>
       </div>
       <div>{{ hit._source.texteJuriJudi.meta.metaSpec.metaJuri.titre }}</div>
-    </li>
-  </ul>
-</div>
+    </div>
 </div>
 </template>
 
@@ -26,8 +23,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  .highlight {
+@import 'material-design-lite/src/shadow/shadow';
+@import 'material-design-lite/src/card/card';
+.highlight__card {
+  max-width: 600px;
+  margin: auto;
+  width: inherit;
+  padding: 0.5em;
+
+  &:hover {
+    @extend .mdl-shadow--4dp;
   }
+
+  & + & {
+    margin-top: 1em;
+  }
+}
 </style>
 <style lang="scss">
   .highlight {

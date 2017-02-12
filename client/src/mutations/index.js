@@ -1,8 +1,8 @@
 const mutations = {
-  setResults (state, { results }) {
+  setResults (state, data) {
     state.search = {
       ...state.search,
-      results
+      ...data
     }
   }
 }

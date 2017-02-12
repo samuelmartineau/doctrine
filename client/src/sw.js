@@ -32,14 +32,13 @@ self.addEventListener('fetch', (event) => {
   const isWebService = event.request.url.indexOf(apiKey) > -1
   if (isWebService) {
     event.respondWith(
-      caches.match(event.request)
-      .then((response) => {
-        response || fetch(event.request)
-        .then((response) => {
-          return caches.open(cacheName).then((cache) => {
-            cache.put(event.request.url, response.clone())
-            return response
-          })
+      caches.open(cacheName).then((cache) => {
+        return cache.match(event.request).then(function (response) {
+          return response || fetch(event.request)
+            .then((response) => {
+              cache.put(event.request, response.clone())
+              return response
+            })
         })
       })
     )

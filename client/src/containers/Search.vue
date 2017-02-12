@@ -2,13 +2,16 @@
   <div class="search-container">
     <field></field>
     <result-stats></result-stats>
+    <pagination></pagination>
     <highlight></highlight>
+    <pagination></pagination>
 </template>
 
 <script>
 import Field from '../components/Field'
 import ResultStats from '../components/ResultStats'
 import Highlight from '../components/Highlight'
+import Pagination from '../components/Pagination'
 export default {
   name: 'search',
   computed: {
@@ -19,7 +22,8 @@ export default {
   components: {
     Field,
     ResultStats,
-    Highlight
+    Highlight,
+    Pagination
   }
 }
 </script>
