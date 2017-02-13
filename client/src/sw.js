@@ -10,7 +10,9 @@ self.addEventListener('install', (e) => {
     caches.open(cacheName).then((cache) => {
       return cache.addAll([
         '/',
-        '/index.html'
+        '/index.html',
+        '/#/',
+        '/#/index.html'
       ].concat(Object.values(assets)))
       .then(() => {
         self.skipWaiting()

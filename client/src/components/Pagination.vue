@@ -1,21 +1,16 @@
 <template>
-  <div class="pagination" v-if="search.results && search.results.hits">
-    <button v-on:click="previousPage" class="mdl-button mdl-js-button mdl-button--raised" :disabled="search.from === 0">previous page</button>
-    <span>{{ search.from }}</span>
-    <button v-on:click="nextPage" class="mdl-button mdl-js-button mdl-button--raised">next page</button>
+  <div class="pagination" v-if="numberOfPages > 0">
+    <button v-on:click="onPreviousPage" class="mdl-button mdl-js-button mdl-button--raised" :disabled="currentPage === 0">previous page</button>
+    <span>{{ currentPage }}</span>
+    <button v-on:click="onNextPage" class="mdl-button mdl-js-button mdl-button--raised">next page</button>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+
 export default {
   name: 'pagination',
-  computed: {
-    search () {
-      return this.$store.state.search
-    }
-  },
-  methods: mapActions(['nextPage', 'previousPage'])
+  props: ['onPreviousPage', 'onNextPage', 'currentPage', 'numberOfPages']
 }
 </script>
 
