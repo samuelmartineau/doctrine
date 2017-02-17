@@ -1,7 +1,7 @@
 <template>
 <div id="app" class="app">
   <header class="header">
-    <div class="header__logo">Doctrine</div>
+    <router-link :to="{ name: 'search' }" class="header__logo" >Doctrine</router-link>
     <div class="header__baseline">Find your legal case</div>
   </header>
   <router-view></router-view>
@@ -53,6 +53,8 @@ body {
   font-size: 2rem;
   padding: 0.5em 0;
   font-weight: bold;
+  text-decoration: none;
+  color: inherit;
 }
 
 .header__baseline {

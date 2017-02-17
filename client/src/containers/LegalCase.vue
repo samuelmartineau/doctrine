@@ -1,15 +1,13 @@
 <template>
   <div class="legal-case">
-     {{ $route.params.id }}
      <spinner v-if="legalCase.loading"></spinner>
-     <div v-if="!legalCase.loading">
-       {{ JSON.stringify(legalCase, null, 6) }}
-     </div>
+     <legal-case-details v-if="!legalCase.loading" :legal-case="legalCase.legalCase._source"></legal-case-details>
   </div>
 </template>
 
 <script>
 import Spinner from '../components/Spinner'
+import LegalCaseDetails from '../components/LegalCaseDetails'
 export default {
   name: 'legal-case',
   computed: {
@@ -21,7 +19,8 @@ export default {
     this.fetchData()
   },
   components: {
-    Spinner
+    Spinner,
+    LegalCaseDetails
   },
   methods: {
     fetchData () {
@@ -33,6 +32,5 @@ export default {
 
 <style>
 .legal-case {
-  background-color: red;
 }
 </style>

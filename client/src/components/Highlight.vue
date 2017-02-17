@@ -31,10 +31,10 @@ export default {
   &__card {
     text-decoration: none;
     color: $secondary_color;
-    max-width: 600px;
+    max-width: $wrapper;
     margin: auto;
     width: inherit;
-    padding: 0.5em;
+    padding: 1em;
 
     &:hover {
       @extend .mdl-shadow--4dp;
