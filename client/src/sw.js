@@ -2,18 +2,20 @@
 const cacheName = 'v1:static'
 
 const assets = global.serviceWorkerOption.assets
+const baseUrl = '/doctrine'
+const paths = [
+  '/',
+  '/index.html',
+  '/#/',
+  '/#/index.html'
+]
 
 // During the installation phase, you'll usually want to cache static assets.
 self.addEventListener('install', (e) => {
   // Once the service worker is installed, go ahead and fetch the resources to make this work offline.
   e.waitUntil(
     caches.open(cacheName).then((cache) => {
-      return cache.addAll([
-        '/',
-        '/index.html',
-        '/#/',
-        '/#/index.html'
-      ].concat(Object.values(assets)))
+      return cache.addAll(paths.map(path => baseUrl + path).concat(Object.values(assets)))
       .then(() => {
         self.skipWaiting()
       })
