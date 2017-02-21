@@ -20,5 +20,8 @@ export default new Router({
         resolve(require('../containers/LegalCase.vue'))
       })
     }
-  }]
+  }],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
