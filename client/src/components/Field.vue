@@ -45,6 +45,7 @@ export default {
   .field {
     text-align: center;
     display: flex;
+    justify-content: center;
   }
   .field__input {
     width: 100%;
