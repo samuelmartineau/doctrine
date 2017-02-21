@@ -1,3 +1,5 @@
+import initialState from '../states/search'
+
 const mutations = {
   setResults (state, data) {
     state.search = {
@@ -9,6 +11,11 @@ const mutations = {
     state.search = {
       ...state.search,
       isFetching
+    }
+  },
+  resetResearch (state) {
+    state.search = {
+      ...initialState
     }
   }
 }

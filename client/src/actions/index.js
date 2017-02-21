@@ -1,3 +1,4 @@
+import localStorage from 'local-storage'
 import { checkStatus, parseJSON } from '../utils/fetch'
 
 function searchCall (value, from) {
@@ -88,6 +89,24 @@ const actions = {
       .catch((error) => {
         console.log('error', error)
       })
+  },
+  toggleFavorite ({ commit, state }, favorite) {
+    const favorites = localStorage.get('favorites') || []
+    const favoritesIds = favorites.map(favorite => favorite.id)
+    if (favoritesIds.includes(favorite.id)) {
+      favorites.splice(favoritesIds.indexOf(favorite.id), 1)
+    } else {
+      favorites.push(favorite)
+    }
+    localStorage.set('favorites', favorites)
+    commit('setFavorites', favorites)
+  },
+  loadFavorites ({ commit, state }) {
+    const favorites = localStorage.get('favorites') || []
+    commit('setFavorites', favorites)
+  },
+  resetResearch ({ commit, state }) {
+    commit('resetResearch')
   }
 }
 

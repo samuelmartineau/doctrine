@@ -14,8 +14,10 @@
         :onNextPage="nextPage"
         :onPreviousPage="previousPage"
         :numberOfPages="numberOfPages"
-        :currentPage="search.from"></pagination>
-      </div>
+        :currentPage="search.from">
+      </pagination>
+    </div>
+    <favorites></favorites>
 </template>
 
 <script>
@@ -25,6 +27,7 @@ import ResultStats from '../components/ResultStats'
 import Highlight from '../components/Highlight'
 import Pagination from '../components/Pagination'
 import Spinner from '../components/Spinner'
+import Favorites from '../components/Favorites'
 
 export default {
   name: 'search',
@@ -42,7 +45,8 @@ export default {
     ResultStats,
     Highlight,
     Pagination,
-    Spinner
+    Spinner,
+    Favorites
   },
   methods: mapActions(['nextPage', 'previousPage'])
 }
