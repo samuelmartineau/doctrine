@@ -32,7 +32,7 @@ self.addEventListener('activate', event => {
 
 // when the browser fetches a URL…
 self.addEventListener('fetch', (event) => {
-  const apiKey = ':9200/'
+  const apiKey = 'es/'
   const isWebService = event.request.url.indexOf(apiKey) > -1
   if (isWebService) {
     event.respondWith(
